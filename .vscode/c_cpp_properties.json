@@ -4,9 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/libtorch/include/torch/csrc/api/include",
-                "${workspaceFolder}/AI/libtorch/include/torch/csrc/api/include",
-                "${workspaceFolder}/AI/libtorch/**"
+                "${workspaceFolder}/include/libtorch/**",
+                "${workspaceFolder}/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang++-18",
