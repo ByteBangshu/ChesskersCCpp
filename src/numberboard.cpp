@@ -11,16 +11,8 @@ void NumberBoard::instantiate(){
   for(int i=0; i<nb.size(); i++){
     for(int j=0; j<nb[0].size(); j++){
       if(i == 0){
-        switch (j){
-          case 0: nb[i][j] = 'r'; break;
-          case 1: nb[i][j] = 'n'; break;
-          case 2: nb[i][j] = 'b'; break;
-          case 3: nb[i][j] = 'q'; break;
-          case 4: nb[i][j] = 'k'; break;
-          case 5: nb[i][j] = 'b'; break;
-          case 6: nb[i][j] = 'n'; break;
-          case 7: nb[i][j] = 'r'; break;
-        }
+        char possiblePieces[] = {'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'};
+        nb[i][j] = possiblePieces[j];
       }
       else if(i == 1){
         nb[i][j] = 'p';
@@ -29,16 +21,8 @@ void NumberBoard::instantiate(){
         nb[i][j] = 'P';
       }
       else if(i == 7){
-        switch(j){
-          case 0: nb[i][j] = 'R'; break;
-          case 1: nb[i][j] = 'N'; break;
-          case 2: nb[i][j] = 'B'; break;
-          case 3: nb[i][j] = 'Q'; break;
-          case 4: nb[i][j] = 'K'; break;
-          case 5: nb[i][j] = 'B'; break;
-          case 6: nb[i][j] = 'N'; break;
-          case 7: nb[i][j] = 'R'; break;
-        }
+        char possiblePieces[] = {'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'};
+        nb[i][j] = possiblePieces[j];
       }
     }
   }
@@ -111,6 +95,15 @@ bool NumberBoard::isDiagonallyAdjacent(pair<int, int> current, pair<int, int> sq
   }
   else{
     return h == 1 && w == 1;
+  }
+}
+void NumberBoard::print(){
+  for(int i=0; i<nb.size(); i++){
+    string current = "";
+    for(int j=0; j<nb[0].size(); j++){
+      current += nb[i][j];
+    }
+    cout << current << endl;
   }
 }
 
@@ -205,6 +198,9 @@ bool NumberBoard::isQueenJump(pair<int, int> start, pair<int, int> middle, pair<
 }
 bool NumberBoard::isKingJump(pair<int, int> start, pair<int, int> middle, pair<int, int> end){
   return isLaterallyAdjacent(start, middle) && isLaterallyAdjacent(middle, end) || isDiagonallyAdjacent(start, middle) && isDiagonallyAdjacent(middle, end);
+}
+bool NumberBoard::jumpCrossesEdge(pair<int, int> start, pair<int, int> middle, pair<int, int> end){
+  return isKingStep(middle, end);
 }
 // Actually execute the moves
 

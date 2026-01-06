@@ -2,6 +2,8 @@
 #define _NUMBERBOARD_H_
 #include <vector>
 #include <utility>
+#include <iostream>
+#include <string>
 using namespace std;
 
 struct NumberBoard{
@@ -14,6 +16,7 @@ struct NumberBoard{
   bool isEmpty(pair<int, int> square);
   bool isLaterallyAdjacent(pair<int, int> current, pair<int, int> square);
   bool isDiagonallyAdjacent(pair<int, int> current, pair<int, int> square);
+  void print();
 
   // Check if valid chess move
   bool isPawnMove(pair<int, int> start, pair<int, int> end);
@@ -36,6 +39,8 @@ struct NumberBoard{
   bool isRookJump(pair<int, int> start, pair<int, int> middle, pair<int, int> end);
   bool isQueenJump(pair<int, int> start, pair<int, int> middle, pair<int, int> end);
   bool isKingJump(pair<int, int> start, pair<int, int> middle, pair<int, int> end);
+  // Check if a jump crosses an edge
+  bool jumpCrossesEdge(pair<int, int> start, pair<int, int> middle, pair<int, int> end);
 
   // Actually execute the moves
   void executeStep(pair<int, int> start, pair<int, int> end);
